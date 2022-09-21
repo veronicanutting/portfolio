@@ -11,6 +11,7 @@ button {
   margin-bottom: 15px;
   border-radius: 2px;
   transition-duration: 0.4s;
+  margin-right: 15px;
 }
 
 .button1:hover {

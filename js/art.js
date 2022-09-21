@@ -101,6 +101,11 @@ function setupPage(allRows) {
       x.style.color = randomColor;
       x.innerHTML = `${allRows.length} works displayed here (plus those on the home page) and counting`;
 
+      randomColor = generateRandColor();
+      x = document.getElementById('pageSubtitle2');
+      x.style.color = randomColor;
+      x.innerHTML = `image data dynamically pulled from google sheets`;
+
       params = ["what","how","color"];
       addSelectorContainers(params);
       for (param of params) {
