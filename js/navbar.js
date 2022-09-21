@@ -1,6 +1,6 @@
 document.getElementById('myNavBar').innerHTML = 
 `<div class="p-2">
-	<h3><a href="home.html">home</></h3>
+	<h3><a href="index.html">home</></h3>
  </div>
  <div class="p-2">
 	<h3><a href="art.html">art</></h3>
