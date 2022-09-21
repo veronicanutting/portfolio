@@ -1,0 +1,60 @@
+#myNavBar {
+	background-color: lightblue;
+}
+
+button {
+  border-width: 1px;
+  /*background-color: field;*/
+  border-width: 1px;
+  border-style: solid;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  margin-bottom: 15px;
+  border-radius: 2px;
+  transition-duration: 0.4s;
+}
+
+.button1:hover {
+  background-color: black;
+  color: white;
+}
+
+.selector_text {
+  margin: 0;
+}
+
+.selector_container {
+  padding-right: 15px;
+}
+
+.h1 {
+  margin: 0;
+}
+
+.photo_overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+.photo_container:hover .photo_overlay {
+  opacity: .8;
+}
+
+.photo_overlay_text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-overflow: ellipsis;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
