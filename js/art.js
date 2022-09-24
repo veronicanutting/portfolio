@@ -65,28 +65,29 @@ function generateRandColor2(){
   var red_var = Math.floor(Math.random()*255);
   var green_var = Math.floor(Math.random()*255);
   var blue_var = Math.floor(Math.random()*255);
-  console.log(red_var,green_var,blue_var);
+  //console.log(red_var,green_var,blue_var);
 }
-generateRandColor2()
+//generateRandColor2()
 
 // Update photo gallery with photos
 function updateGallery(filteredRows) {
   var htmlString = '<div class="row" style="padding-right:15px">'
   for (row of filteredRows) {
-    // 
-    const randomColor = generateRandColor(); 
-    htmlString += 
-    `<div class="col" style="padding-left:15px; padding-top:15px; padding-right:0px;">
-      <p style="color: ${randomColor}; margin:0px;">${row.imageTitle}</p>
-      <div class="photo_container">
-        <a href=${"images/"+row.fileName} target="_blank" rel="noopener noreferrer"> 
-          <img src=${"images/"+row.fileName} alt="${row.description}" style="height: 225px;"/>
-          <div class="photo_overlay" style="background-color: ${randomColor};">
-            <div class="photo_overlay_text">${row.when+"<br>"+row.description}</div>
-          </div>
-        </a>
-      </div>  
-    </div>`;
+    if (row.showHide == 'show') {
+      const randomColor = generateRandColor(); 
+      htmlString += 
+      `<div class="col" style="padding-left:15px; padding-top:15px; padding-right:0px;">
+        <p style="color: ${randomColor}; margin:0px;">${row.imageTitle}</p>
+        <div class="photo_container">
+          <a href=${"images/"+row.fileName} target="_blank" rel="noopener noreferrer"> 
+            <img src=${"images/"+row.fileName} alt="${row.description}" style="height: 225px;"/>
+            <div class="photo_overlay" style="background-color: ${randomColor};">
+              <div class="photo_overlay_text">${row.when+"<br>"+row.description}</div>
+            </div>
+          </a>
+        </div>  
+      </div>`;
+    }
   }
   htmlString += '</div>'
   document.getElementById('artPhotos').innerHTML = htmlString;
