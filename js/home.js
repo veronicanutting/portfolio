@@ -40,13 +40,21 @@ function remixArt(colName,numImages) {
   var newOrder = [];
   for (var i = 1; i <= numImages; i++) {
     newOrder.push(i);
-}
+  }
   newOrder.sort((a, b) => 0.5 - Math.random());
-  for (i of newOrder) {
-      htmlString += 
-      `<a href="images/collections/${colName+i.toString()+".jpg"}" target="_blank" rel="noopener noreferrer"> 
-        <img src="images/collections/${colName+i.toString()+".jpg"}" alt="${colName+i.toString()}" style="width: 100%;"/>
-      </a>`;
+  for (var i = 0; i < newOrder.length; i++) {
+
+    var rotateClass = '';
+    if (i%2==1) { // if num is odd, simple way to randomize
+      rotateClass = 'rotate180';
+    }
+
+    var imageNum = newOrder[i];
+    htmlString += 
+    `<a href="images/collections/${colName+imageNum.toString()+".jpg"}" target="_blank" rel="noopener noreferrer"> 
+      <img src="images/collections/${colName+imageNum.toString()+".jpg"}" alt="${colName+imageNum.toString()}" 
+      style="width: 100%;" class="${rotateClass}"/>
+    </a>`;
     };
   x.innerHTML = htmlString;
 };
