@@ -54,9 +54,9 @@ function generateRandColor(){
   return "#"+Math.floor(Math.random()*16777215).toString(16);
 }
 
-  randomColor = generateRandColor();
-  x = document.getElementById('pageSubtitle');
-  x.style.color = randomColor;
+randomColor = generateRandColor();
+x = document.getElementById('pageSubtitle');
+x.style.color = randomColor;
 
 var randomColor = generateRandColor();
 const remixButton = document.getElementById("remixButton");

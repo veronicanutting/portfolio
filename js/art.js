@@ -13,6 +13,7 @@ function addSelectorContainers(params){
   }
   htmlString+='</div>';
 
+
   htmlString+=
   `<div class="row" style="margin:0px">
     <div class="selector_container">
