@@ -24,16 +24,6 @@ function displayArt(collections) {
   document.getElementById("projects").innerHTML = htmlString;
 };
 
-// Adapted from https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
-function showDescription() {
-  var x = document.getElementById("siteDescription");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-  };
-};
-
 function remixArt(colName,numImages) {
   var x = document.getElementById(colName);
   var htmlString = '';
@@ -64,12 +54,12 @@ function generateRandColor(){
   return "#"+Math.floor(Math.random()*16777215).toString(16);
 }
 
+  randomColor = generateRandColor();
+  x = document.getElementById('pageSubtitle');
+  x.style.color = randomColor;
+
 var randomColor = generateRandColor();
 const remixButton = document.getElementById("remixButton");
 remixButton.style.color = randomColor;
-
-randomColor = generateRandColor();
-const moreButton = document.getElementById("descriptionButton");
-moreButton.style.color = randomColor;
 
 displayArt(collections);

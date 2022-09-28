@@ -1,6 +1,6 @@
 // Update the html file with space for dropdowns
 function addSelectorContainers(params){
-  htmlString = '<div class="row" style="margin:0px">';
+  htmlString = '<div class="row" style="margin:0px; padding-bottom:15px;">';
   params.sort((a, b) => 0.5 - Math.random());
   for (param of params) {
     const randomColor = generateRandColor();
@@ -12,6 +12,19 @@ function addSelectorContainers(params){
     </div>`
   }
   htmlString+='</div>';
+
+  htmlString+=
+  `<div class="row" style="margin:0px">
+    <div class="selector_container">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="lampCheckbox">
+        <label class="form-check-label" for="lampCheckbox">
+          only magazine
+        </label>
+      </div>
+    </div>
+  </div>`
+  
   document.getElementById('artSelectors').innerHTML = htmlString;
 }
 
@@ -52,6 +65,23 @@ function addParamListener(allRows,param){
   });
 }
 
+// When art type is selected, update art gallery
+function addCBListener(allRows){
+  const cb = document.querySelector('#lampCheckbox');
+  cb.addEventListener('change', function handleChange(event) {
+    if (cb.checked) {
+      var filteredRows = allRows.filter(function(row) {
+      return row["lamp"] == "yes";
+      });
+      updateGallery(filteredRows);
+    } else {
+      updateGallery(allRows);
+    };
+  });
+}
+
+
+
 // Adapted from https://css-tricks.com/snippets/javascript/random-hex-color/
 function generateRandColor(){
   var randNum = Math.floor(Math.random()*16777215).toString(16);
@@ -73,21 +103,24 @@ function generateRandColor2(){
 function updateGallery(filteredRows) {
   var htmlString = '<div class="row" style="padding-right:15px">'
   for (row of filteredRows) {
-    if (row.showHide == 'show') {
       const randomColor = generateRandColor(); 
+      var rowDescription = row.description;
+      if (row.lamp=="yes") {
+        rowDescription +=`Published in The Harvard Lampoon's ${row.lampIssue} # 
+                          (${row.lampIssueDate}), pg(s): ${row.lampIssuePage}`
+      }
       htmlString += 
       `<div class="col" style="padding-left:15px; padding-top:15px; padding-right:0px;">
         <p style="color: ${randomColor}; margin:0px;">${row.imageTitle}</p>
         <div class="photo_container">
           <a href=${"images/"+row.fileName} target="_blank" rel="noopener noreferrer"> 
-            <img src=${"images/"+row.fileName} alt="${row.description}" style="height: 225px;"/>
+            <img src=${"images/"+row.fileName} alt="${rowDescription}" style="height: 225px;"/>
             <div class="photo_overlay" style="background-color: ${randomColor};">
-              <div class="photo_overlay_text">${row.when+"<br>"+row.description}</div>
+              <div class="photo_overlay_text">${row.when+"<br>"+rowDescription}</div>
             </div>
           </a>
         </div>  
       </div>`;
-    }
   }
   htmlString += '</div>'
   document.getElementById('artPhotos').innerHTML = htmlString;
@@ -95,26 +128,22 @@ function updateGallery(filteredRows) {
 
 
 function setupPage(allRows) {
+  console.log("inside detup");
+
   allRows.sort((a, b) => 0.5 - Math.random()); // From https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj
 
-      var randomColor = generateRandColor();
-      x = document.getElementById('pageSubtitle');
-      x.style.color = randomColor;
-      x.innerHTML = `${allRows.length} works displayed here (plus those on the home page) and counting`;
+  randomColor = generateRandColor();
+  x = document.getElementById('pageSubtitle');
+  x.style.color = randomColor;
 
-      randomColor = generateRandColor();
-      x = document.getElementById('pageSubtitle2');
-      x.style.color = randomColor;
-      x.innerHTML = `image data dynamically pulled from google sheets`;
-
-      params = ["what","how","color"];
-      addSelectorContainers(params);
-      for (param of params) {
-        generateParamSelector(allRows,param);
-        addParamListener(allRows,param);
-      }
-
-      updateGallery(allRows); // Set up the gallery the first time
+  params = ["what","how","color"];
+  addSelectorContainers(params);
+  for (param of params) {
+    generateParamSelector(allRows,param);
+    addParamListener(allRows,param);
+  }
+  addCBListener(allRows);
+  updateGallery(allRows); // Set up the gallery the first time
 }
 
 // Link to GoogleSheet: https://docs.google.com/spreadsheets/d/1-1J-Do9TP8dymGw4Vr1CHYM18dVo3B3FLOFJDsWT8EA/edit#gid=0
@@ -143,8 +172,8 @@ function getTableData(q,url) {
 
   .catch(function(error) {
     console.log(error);
-    console.log("Using backup data from september 20, 2022")
-    setupPage(backupData);
+    x = document.getElementById('pageSubtitle');
+    x.innerHTML = "Uh-oh, there was an error loading the GSheets data. Sorry about that!";
     });
 };
 

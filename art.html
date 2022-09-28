@@ -16,11 +16,12 @@
 
   <body>
     <div class="container-fluid d-flex justify-content-center" id="myNavBar"></div>
-    <div class="container-fluid d-flex"><h1>selected drawings, cards, and more</h1></div>
-    <div class="container-fluid d-flex"id="pageSubtitle"></div>
-    <div class="container-fluid d-flex"id="pageSubtitle2"></div>
+    <div class="container-fluid">
+      <h1>selected drawings, cards, and more</h1>
+      <h4 id="pageSubtitle">image data dynamically pulled from google sheets</h4>
+    </div>
 
-    <div class="container-fluid d-flex" id="artSelectors"></div>
+    <div class="container-fluid" id="artSelectors"></div>
     <div class="container-fluid" id="artPhotos"></div>
 
     <footer class="container-fluid d-flex justify-content-center" id="myFooter"></footer>
@@ -28,7 +29,6 @@
     <!-- My JavaScript -->
     <script src="js/navbar.js"></script>
     <script src="js/art.js"></script>
-    <script src="data/backupData.js"></script>
 
     <!-- Files for Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
