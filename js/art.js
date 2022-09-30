@@ -129,8 +129,6 @@ function updateGallery(filteredRows) {
 
 
 function setupPage(allRows) {
-  console.log("inside detup");
-
   allRows.sort((a, b) => 0.5 - Math.random()); // From https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj
 
   randomColor = generateRandColor();
