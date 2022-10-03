@@ -18,9 +18,9 @@ function addSelectorContainers(params){
   `<div class="row" style="margin:0px">
     <div class="selector_container">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="lampCheckbox">
-        <label class="form-check-label" for="lampCheckbox">
-          only magazine
+        <input class="form-check-input" type="checkbox" value="" id="magCheckbox">
+        <label class="form-check-label" for="magCheckbox">
+          view only drawings published in college humor magazine
         </label>
       </div>
     </div>
@@ -68,11 +68,11 @@ function addParamListener(allRows,param){
 
 // When art type is selected, update art gallery
 function addCBListener(allRows){
-  const cb = document.querySelector('#lampCheckbox');
+  const cb = document.querySelector('#magCheckbox');
   cb.addEventListener('change', function handleChange(event) {
     if (cb.checked) {
       var filteredRows = allRows.filter(function(row) {
-      return row["lamp"] == "yes";
+      return row["magazine"] == "yes";
       });
       updateGallery(filteredRows);
     } else {
@@ -106,9 +106,9 @@ function updateGallery(filteredRows) {
   for (row of filteredRows) {
       const randomColor = generateRandColor(); 
       var rowDescription = row.description;
-      if (row.lamp=="yes") {
-        rowDescription +=`Published in The Harvard Lampoon's ${row.lampIssue} # 
-                          (${row.lampIssueDate}), pg(s): ${row.lampIssuePage}`
+      if (row.magazine=="yes") {
+        rowDescription +=`Published in The Harvard Lampoon's ${row.magIssue} # 
+                          (${row.magDate}), pg(s): ${row.magPage}`
       }
       htmlString += 
       `<div class="col" style="padding-left:15px; padding-top:15px; padding-right:0px;">
