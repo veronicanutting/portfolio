@@ -1,5 +1,11 @@
 #myNavBar {
 	background-color: lightblue;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 button {
@@ -21,7 +27,7 @@ button {
 
 .selector_text {
   margin: 0;
-}
+ }
 
 .selector_container {
   padding-right: 15px;
@@ -32,7 +38,7 @@ button {
 }
 
 
-/*from https://stackoverflow.com/questions/20061774/rotate-an-image-in-image-source-in-html*/
+/*rotate180 from https://stackoverflow.com/questions/20061774/rotate-an-image-in-image-source-in-html*/
 .rotate180 {
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
