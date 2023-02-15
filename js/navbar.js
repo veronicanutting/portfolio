@@ -9,5 +9,5 @@ document.getElementById('myNavBar').innerHTML =
  document.getElementById('myFooter').innerHTML = 
 `<div class="p-2" style="background-color:lightblue;">site by veronica nutting</div>
 <div class="p-2" style="background-color:lightblue;">
-<a href="https://docs.google.com/spreadsheets/d/1-1J-Do9TP8dymGw4Vr1CHYM18dVo3B3FLOFJDsWT8EA/edit?usp=sharing">art data here</a>
+<a target="_blank" href="https://docs.google.com/spreadsheets/d/1-1J-Do9TP8dymGw4Vr1CHYM18dVo3B3FLOFJDsWT8EA/edit?usp=sharing">art data here</a>
 </div>`
